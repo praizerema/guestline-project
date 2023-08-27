@@ -16,7 +16,7 @@ export const StarRating: React.FC<StarRatingProps> = ({
   const [hover, setHover] = useState(0);
 
   return (
-    <div className="star-rating">
+    <div>
       {[...Array(5)].map((_, index) => {
         const starIndex = index + 1;
 
@@ -32,13 +32,13 @@ export const StarRating: React.FC<StarRatingProps> = ({
             onMouseLeave={() => setHover(rating)}
           >
             <span
-              className="star text-2xl mr-4"
+              className="text-2xl mr-4"
               style={{
                 textShadow: `
-                  -0.3px -0.3px 0 ${color},  
-                  0.3px -0.3px 0 ${color},
-                  -0.3px 0.3px 0 ${color},
-                  0.3px 0.3px 0 ${color}`,
+                  -0.6px -0.6px 0 ${color},  
+                  0.6px -0.6px 0 ${color},
+                  -0.6px 0.6px 0 ${color},
+                  0.6px 0.6px 0 ${color}`,
               }}
             >
               &#9733;
@@ -58,7 +58,7 @@ export const StarRatingFixed: React.FC<StarRatingProps> = ({
 }) => {
 
   return (
-    <div className="star-rating">
+    <div>
       {[...Array(5)].map((_, index) => {
         const starIndex = index + 1;
 
@@ -71,7 +71,7 @@ export const StarRatingFixed: React.FC<StarRatingProps> = ({
             }`}
           >
             <span
-              className="star text-2xl mr-4"
+              className="text-2xl mr-4"
               style={{
                 textShadow: `
                   -0.3px -0.3px 0 ${color},  
