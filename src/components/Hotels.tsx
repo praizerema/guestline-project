@@ -52,8 +52,8 @@ const Hotels = () => {
           <div className="col-span-12 md:col-span-4">
             <div className="mb-2"> Star Rating</div>
             <StarRating
-              color="#fbc103"
-              textColor="text-[#fbc103]"
+              color="#ab7900"
+              textColor="text-[#ab7900]"
               rating={rating}
               setRating={setRating}
             />

@@ -94,8 +94,8 @@ export const HotelComponent: React.FC<ComponentProps> = ({
             </p>
             <div>
               <StarRatingFixed
-                color="#fbc103"
-                textColor="text-[#fbc103]"
+                color="#ab7900"
+                textColor="text-[#ab7900]"
                 rating={hotel.starRating}
                 setRating={() => undefined}
               />
