@@ -1,5 +1,4 @@
 import Hotels from './components/Hotels';
-import './App.css';
 
 function App() {
   return (

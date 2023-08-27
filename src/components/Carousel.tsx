@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { RiArrowDropDownLine, RiArrowDropLeftFill, RiArrowDropLeftLine, RiArrowDropRightFill, RiArrowDropRightLine } from 'react-icons/ri';
+import { RiArrowDropLeftLine, RiArrowDropRightLine } from 'react-icons/ri';
 
 interface CarouselProps {
-  images: string[]; 
+  images: string[];
 }
 
 const Carousel: React.FC<CarouselProps> = ({ images }) => {
@@ -13,19 +13,31 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
   };
 
   const goToPrevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length,
+    );
   };
 
   return (
-    <div className="carousel-container">
+    <div className="carousel-container ">
       <button className="carousel-button" onClick={goToPrevSlide}>
-       <RiArrowDropLeftLine/>
+        <span className="block md:hidden">
+          <RiArrowDropLeftLine size={'2em'} />
+        </span>
+        <span className="hidden md:block">
+          <RiArrowDropLeftLine size={'6em'} />
+        </span>
       </button>
       <div className="carousel-slide">
         <img src={images[currentIndex]} alt={`Slide ${currentIndex}`} />
       </div>
-      <button className="carousel-button" onClick={goToNextSlide}>
-       <RiArrowDropRightLine/>
+      <button className="carousel-button " onClick={goToNextSlide}>
+        <span className="hidden md:block">
+          <RiArrowDropRightLine size={'6em'} />
+        </span>
+        <span className="block md:hidden">
+          <RiArrowDropRightLine size={'2em'} />
+        </span>
       </button>
     </div>
   );

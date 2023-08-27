@@ -9,6 +9,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f7f4f67d
 }
 
 code {
@@ -23,30 +24,37 @@ code {
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 10px;
 }
 
 .carousel-slide {
-  width: 100%;
-  display: flex;
+  width: 300px;
+  height: 150px;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
 }
 
 .carousel-slide img {
   max-width: 100%;
-  max-height: 150px;
+  height: full;
 }
 
-.carousel-button {
-  padding: 8px 12px;
-  background-color: #333;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
 
-.carousel-button:hover {
-  background-color: #555;
-}
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #009fe3;
+  border-radius: 50%;
+  width: 8rem;
+  height: 8rem;
+  animation: spin 2s linear infinite;
 
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

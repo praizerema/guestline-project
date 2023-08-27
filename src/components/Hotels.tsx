@@ -2,7 +2,7 @@ import { getHotelListApi } from '../services';
 import { UseQueryResult, useQuery } from 'react-query';
 import { StarRating } from './StarRatings';
 import { useState } from 'react';
-import { CounterInput } from './inputs';
+import { CounterInput, Button } from './index';
 import { HotelComponent } from './HotelComponent';
 
 interface Hotel {
@@ -31,35 +31,68 @@ const Hotels = () => {
   const [minorNumber, setMinorNumber] = useState(0);
   const [adultNumber, setAdultNumber] = useState(0);
 
-  const { data: hotelList, isLoading }:UseQueryResult<Hotel[]> = useQuery({
+  // Fetch hotel list
+  const { data: hotelList, isLoading }: UseQueryResult<Hotel[]> = useQuery({
     queryKey: ['getHotelListApi', 'OBMNG'],
     queryFn: () => getHotelListApi('OBMNG'),
   });
 
+  // Reset filter
+  const resetFilter = () => {
+    setAdultNumber(0);
+    setMinorNumber(0);
+    setRating(0);
+  };
+
   return (
-    <div>
-      <div className="flex">
-        <StarRating
-          color="#afbbd1"
-          textColor="text-[#afbbd1]"
-          rating={rating}
-          setRating={setRating}
-        />
-        <div className="flex">
-          <span>Adults</span>
-          <CounterInput count={adultNumber} setCount={setAdultNumber} />
-        </div>
-        <div className="flex">
-          <span>Children</span>
-          <CounterInput count={minorNumber} setCount={setMinorNumber} />
+    <div className="py-10 lg:px-32 text-gray-800">
+      <div className=" border p-5  mx-auto mb-12 rounded-md bg-white">
+        <div className="mb-6 font-bold text-lg">Filter</div>
+        <div className="grid grid-cols-12 gap-y-5 text-center md:text-left content-end">
+          <div className="col-span-12 md:col-span-4">
+            <div className="mb-2"> Star Rating</div>
+            <StarRating
+              color="#fbc103"
+              textColor="text-[#fbc103]"
+              rating={rating}
+              setRating={setRating}
+            />
+          </div>
+
+          <div className="col-span-5 md:col-span-3">
+            <div className="mb-2">Adults</div>
+            <CounterInput count={adultNumber} setCount={setAdultNumber} />
+          </div>
+          <div className="col-span-5 md:col-span-3">
+            <div className="mb-2">Children</div>
+            <CounterInput count={minorNumber} setCount={setMinorNumber} />
+          </div>
+          <div className="col-span-2 md:col-span-2 text-white">
+            <Button
+              onClick={resetFilter}
+              label="Reset"
+              className="bg-[#009fe3] px-5 py-2 rounded-lg"
+            />
+          </div>
         </div>
       </div>
 
-      <div className='space-y-10'>
-        {!isLoading && hotelList?.map((hotel: Hotel) => (
-         parseInt(hotel?.starRating) >= rating && <HotelComponent rating= {rating} hotel= {hotel} minorNumber= {minorNumber} adultNumber={adultNumber} key = {hotel?.id}/>
-        ))}
-      </div>
+    {  isLoading ?  
+   <div className="loader mx-auto mt-44"></div>
+   : <div className="space-y-10 ">
+        {
+          hotelList?.map(
+            (hotel: Hotel) =>
+              parseInt(hotel?.starRating) >= rating && (
+                <HotelComponent
+                  hotel={hotel}
+                  minorNumber={minorNumber}
+                  adultNumber={adultNumber}
+                  key={hotel?.id}
+                />
+              ),
+          )}
+      </div>}
     </div>
   );
 };
