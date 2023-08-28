@@ -22,10 +22,8 @@ To get the project up and running on your local machine, follow these steps:
 1. Clone this repository: `git clone https://github.com/praizerema/guestline-project.git`
 2. Navigate to the project directory: `cd guestline-project`
 3. Install dependencies: `yarn install`(if you do not have yarn installed on your PC run `npm install --global yarn`)
-4. Start the server `yarn start`
-5. Create a `.env` file in the project root or directory and paste the following variable:
-
-`REACT_APP_API_URL = https://obmng.dbm.guestline.net/api`
+4. Create a `.env` file in the project root or directory and paste the following variable: `REACT_APP_API_URL = https://obmng.dbm.guestline.net/api`
+5. Start the server `yarn start`
 
 ## Usage
 
